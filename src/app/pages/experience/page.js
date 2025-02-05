@@ -1,9 +1,19 @@
 "use client";
 import { useState } from "react";
-import { Container, Row, Col, Tab, Tabs } from "react-bootstrap";
+import { Container, Row, Col, Tab, Tabs, Button } from "react-bootstrap";
 import "./experience.css";
 
 const experience = [
+  {
+    title: "Cyber Security Intern",
+    company: "Etech Global Services",
+    duration: "Feb 2025 - Present",
+    description: [
+      "Conduct security audits for compliance with NIST & ISO 27001.",
+      "Assist in incident response and forensic investigations.",
+      "Perform penetration testing and threat analysis using Metasploit, Burp Suite, Nmap.",
+    ],
+  },
   {
     title: "Graduate Teaching Assistant",
     company: "Stephen F. Austin State University",
@@ -74,23 +84,29 @@ const projects = [
 
 export const ExperienceAndProjectsSection = () => {
   const [key, setKey] = useState("experience");
+  const [currentPage, setCurrentPage] = useState(0);
+  const experiencesPerPage = 6; // Show 6 experiences per page
+
+  // Pagination Logic
+  const startIndex = currentPage * experiencesPerPage;
+  const endIndex = startIndex + experiencesPerPage;
+  const paginatedExperiences = experience.slice(startIndex, endIndex);
 
   return (
     <main id="experience-projects" className="py-5">
       <Container>
         <h2 className="text-center mb-4">Experience & Projects</h2>
 
-        {/* Bootstrap Tabs */}
         <Tabs
           id="experience-projects-tabs"
           activeKey={key}
           onSelect={(k) => setKey(k)}
           className="mb-3 custom-tabs"
         >
-          {/* Experience Tab */}
+          {/* Experience Tab with Pagination */}
           <Tab eventKey="experience" title="Experience">
             <Row>
-              {experience.map((exp, index) => (
+              {paginatedExperiences.map((exp, index) => (
                 <Col md={6} key={index} className="mb-4">
                   <div className="box p-4">
                     <h5>{exp.title} <span className="text-muted">({exp.company})</span></h5>
@@ -104,9 +120,29 @@ export const ExperienceAndProjectsSection = () => {
                 </Col>
               ))}
             </Row>
+
+            {/* Pagination Controls */}
+            <div className="pagination-buttons text-center mt-4">
+              <Button
+                variant="dark"
+                className="me-2"
+                onClick={() => setCurrentPage(currentPage - 1)}
+                disabled={currentPage === 0}
+              >
+                Previous
+              </Button>
+
+              <Button
+                variant="dark"
+                onClick={() => setCurrentPage(currentPage + 1)}
+                disabled={endIndex >= experience.length}
+              >
+                Next
+              </Button>
+            </div>
           </Tab>
 
-          {/* Projects Tab */}
+          {/* Projects Tab (No Pagination) */}
           <Tab eventKey="projects" title="Projects">
             <Row>
               {projects.map((project, index) => (

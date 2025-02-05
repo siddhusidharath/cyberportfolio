@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import './about.css';
 import { Container, Row, Col } from 'react-bootstrap';

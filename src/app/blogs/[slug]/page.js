@@ -1,17 +1,21 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import { FaTwitter, FaFacebook } from "react-icons/fa";
-import "./BlogPost.css";
+import "./blogpost.css";
 
 const blogPosts = [
   {
     slug: "introduction-to-cybersecurity",
-    title: "A Satisfied Customer Is The Best Business Strategy Today",
-    content: `<p>Lorem ipsum dolor sit amet...</p>`,
-  },
+    title: "Introduction to Cybersecurity: Why It Matters More Than Ever",
+    content: `
+    <p>In today's fast-paced digital world, the question is no longer whether we should be concerned about cybersecurity—it’s how we can protect ourselves effectively. Cybersecurity has become a crucial concern for individuals, businesses, and, importantly, developers. But why? Why is cybersecurity such an essential field to dive into, and why should developers care about it?</p>
+    <p>Imagine this: Your personal data, your online accounts, or even your company's sensitive information—it's all stored in the digital world. What if that data could be accessed by malicious actors in the blink of an eye? In a world where everything is connected, the threat of cyberattacks is always looming.</p>
+    <p>But here’s the thing—cybersecurity is about more than just protecting your personal data. It's about ensuring the integrity, availability, and confidentiality of data across various platforms. For developers, understanding and integrating cybersecurity into their workflow is no longer optional; it’s a responsibility.</p>
+    <p>So, what does this mean for developers? How does it impact their day-to-day work? And, most importantly, how can we stay ahead of potential threats in this ever-evolving digital landscape?</p>
+    <p>Stay tuned for the next blog to learn more!</p>`,
+},
   {
     slug: "how-to-secure-your-devices",
     title: "How to Secure Your Devices",

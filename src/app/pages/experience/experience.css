@@ -26,6 +26,25 @@ h2::after {
   left: 20%;
   border-radius: 5px;
 }
+/* Pagination Buttons */
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-buttons button {
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.pagination-buttons button:disabled {
+  background-color: #ccc !important;
+  cursor: not-allowed;
+}
 
 /* Custom Tabs */
 .custom-tabs {
