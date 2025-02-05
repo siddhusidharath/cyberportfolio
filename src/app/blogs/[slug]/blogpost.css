@@ -1,0 +1,78 @@
+/* BlogPost.css */
+
+.blog-container {
+    margin-top: 50px;
+  }
+  
+  .blog-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 40px;
+    background: #ffffff;
+    text-align: left; /* Left-align text */
+  }
+  
+  .blog-title {
+    font-size: 2.5rem;
+    font-weight: bold; /* Bold title */
+    margin-bottom: 30px;
+    color: #333; /* Dark color for title */
+    line-height: 1.3;
+  }
+  
+  .blog-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #555; /* Slightly lighter color for content */
+  }
+  
+  .blog-content p {
+    margin-bottom: 20px; /* Spacing between paragraphs */
+  }
+  
+  .blog-image {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 8px; /* Rounded corners for images */
+  }
+  
+  .social-share-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+  }
+  
+  .share-button {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: black; /* Black background */
+    color: white; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px; /* Rounded buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .share-button:hover {
+    background-color: #333; /* Dark gray on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .blog-title {
+      font-size: 2rem; /* Smaller title on mobile */
+    }
+  
+    .blog-content {
+      font-size: 1rem; /* Smaller text on mobile */
+    }
+  
+    .share-button {
+      font-size: 1rem; /* Smaller buttons on mobile */
+      padding: 8px 16px;
+    }
+  }

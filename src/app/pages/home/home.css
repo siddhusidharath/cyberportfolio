@@ -1,0 +1,107 @@
+/* Background styling */
+#home {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('/images/homepage/banner1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 15px;
+}
+
+/* Portfolio Banner */
+.banner_portfolio {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 60px 30px;
+  color: white;
+  border-radius: 12px;
+  max-width: 90%;
+  width: 800px;
+  text-align: center;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease-in-out;
+}
+
+.banner_portfolio:hover {
+  transform: scale(1.02);
+}
+
+/* Title Styling */
+.contenttitle {
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Inner Content */
+.innercontent p {
+  font-size: 1.3rem;
+  margin-top: 25px;
+  line-height: 1.8;
+  color: #f1f1f1;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.innercontent p:hover {
+  transform: scale(1.02);
+  color: #ff8a00;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.innercontent {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .contenttitle {
+    font-size: 2.2rem;
+  }
+  .innercontent p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner_portfolio {
+    padding: 40px 20px;
+  }
+  .contenttitle {
+    font-size: 1.8rem;
+  }
+  .innercontent p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenttitle {
+    font-size: 1.5rem;
+  }
+  .innercontent p {
+    font-size: 0.9rem;
+  }
+}
