@@ -1,24 +1,55 @@
 'use client'; // Ensure this component is client-side
+import React, { useState, useEffect } from 'react';
 import './contactform.css'; // Adjust the path as per your project structure
-
-import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import emailjs from 'emailjs-com'; // Import EmailJS
-import ReCAPTCHA from 'react-google-recaptcha'; // Import reCAPTCHA
 
 export const ContactForm = ({ showModal, handleClose }) => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('');
   const [captchaVerified, setCaptchaVerified] = useState(false); // reCAPTCHA state
+  const [captchaQuestion, setCaptchaQuestion] = useState(''); // Store the captcha question
+  const [captchaAnswer, setCaptchaAnswer] = useState(null); // Store the captcha answer
+  const [userAnswer, setUserAnswer] = useState(''); // Store user's answer
 
-  // reCAPTCHA handler
-  const handleCaptchaChange = (value) => {
-    if (value) {
-      setCaptchaVerified(true);
-    } else {
-      setCaptchaVerified(false);
+  // Function to generate random math CAPTCHA question
+  const generateCaptcha = () => {
+    const num1 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+    const num2 = Math.floor(Math.random() * 10) + 1; // Random number between 1 and 10
+    const operationType = Math.floor(Math.random() * 4); // 0 - addition, 1 - subtraction, 2 - multiplication, 3 - division
+
+    let question = '';
+    let answer = 0;
+
+    switch (operationType) {
+      case 0: // Addition
+        question = `${num1} + ${num2} = ?`;
+        answer = num1 + num2;
+        break;
+      case 1: // Subtraction
+        question = `${num1} - ${num2} = ?`;
+        answer = num1 - num2;
+        break;
+      case 2: // Multiplication
+        question = `${num1} * ${num2} = ?`;
+        answer = num1 * num2;
+        break;
+      case 3: // Division
+        // Make sure the division is clean (no floating point numbers)
+        question = `${num1 * num2} / ${num2} = ?`;
+        answer = num1; // Since num1 * num2 / num2 = num1
+        break;
+      default:
+        break;
     }
+
+    setCaptchaAnswer(answer); // Set the correct answer
+    setCaptchaQuestion(question); // Set the CAPTCHA question
   };
+
+  useEffect(() => {
+    generateCaptcha(); // Generate CAPTCHA when the component mounts or after submission
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -27,11 +58,17 @@ export const ContactForm = ({ showModal, handleClose }) => {
     });
   };
 
+  const handleAnswerChange = (e) => {
+    setUserAnswer(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!captchaVerified) {
-      setStatus('Please complete the CAPTCHA before submitting.');
+    // Check if user's answer matches the captcha answer
+    if (parseInt(userAnswer) !== captchaAnswer) {
+      setStatus('Incorrect CAPTCHA answer.');
+      generateCaptcha(); // Generate a new CAPTCHA question after error
       return;
     }
 
@@ -45,10 +82,12 @@ export const ContactForm = ({ showModal, handleClose }) => {
         setStatus('Message sent successfully!');
         setFormData({ name: '', email: '', message: '' }); // Clear form
         setCaptchaVerified(false); // Reset CAPTCHA
+        generateCaptcha(); // Generate a new CAPTCHA after successful message
       })
       .catch((error) => {
         console.error('Error sending email:', error);
         setStatus('Error sending message. Please try again.');
+        generateCaptcha(); // Generate a new CAPTCHA after error
       });
   };
 
@@ -99,18 +138,25 @@ export const ContactForm = ({ showModal, handleClose }) => {
             />
           </Form.Group>
 
-          {/* reCAPTCHA */}
-          <ReCAPTCHA
-            sitekey="6LcnYNMqAAAAAE9u_JvQUH1UjD1smxmidqGfqjss"  // Your reCAPTCHA sitekey here
-            onChange={handleCaptchaChange}
-          />
+          {/* Math CAPTCHA */}
+          <Form.Group controlId="captchaQuestion">
+            <Form.Label>{captchaQuestion}</Form.Label>
+            <Form.Control
+              type="number"
+              value={userAnswer}
+              onChange={handleAnswerChange}
+              placeholder="Enter answer"
+              required
+              className="form-control-custom"
+            />
+          </Form.Group>
 
           <p className="status-message">{status}</p>
           <div className="button-group">
             <Button variant="secondary" onClick={handleClose} className="close-button">
               Close
             </Button>
-            <Button variant="primary" type="submit" className="send-button" disabled={!captchaVerified}>
+            <Button variant="primary" type="submit" className="send-button">
               Send Message
             </Button>
           </div>
