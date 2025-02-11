@@ -101,7 +101,7 @@ export const ContactForm = ({ showModal, handleClose }) => {
 
           {/* reCAPTCHA */}
           <ReCAPTCHA
-            sitekey="6LdBZ8oqAAAAAP4brq0ntWO0pgQlwKYvqBth7EnQ" 
+            sitekey="6LcnYNMqAAAAAE9u_JvQUH1UjD1smxmidqGfqjss"  // Your reCAPTCHA sitekey here
             onChange={handleCaptchaChange}
           />
 
@@ -110,7 +110,7 @@ export const ContactForm = ({ showModal, handleClose }) => {
             <Button variant="secondary" onClick={handleClose} className="close-button">
               Close
             </Button>
-            <Button variant="primary" type="submit" className="send-button">
+            <Button variant="primary" type="submit" className="send-button" disabled={!captchaVerified}>
               Send Message
             </Button>
           </div>
