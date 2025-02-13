@@ -1,0 +1,84 @@
+.modal-header-custom {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  color: white;
+  border-bottom: none;
+  padding: 15px;
+  text-align: center;
+}
+
+.modal-body-custom {
+  background: #222;
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.contact-form .form-label {
+  color: #ff8a00;
+  font-weight: bold;
+}
+
+.form-control-custom {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.form-control-custom:focus {
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  box-shadow: none;
+}
+
+.status-message {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 10px;
+  color: #ff8a00;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.close-button, .send-button {
+  width: 48%;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.send-button {
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  border: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.send-button:hover {
+  background: linear-gradient(90deg, #e52e71, #ff8a00);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .modal-body-custom {
+    padding: 20px;
+  }
+
+  .form-control-custom {
+    padding: 10px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .close-button, .send-button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

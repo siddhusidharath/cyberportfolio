@@ -1,0 +1,69 @@
+footer {
+  background: linear-gradient(135deg, #333, #444); /* Dark gradient for a modern look */
+  color: #fff; /* White text for contrast */
+  padding: 15px 0; /* Reduced padding */
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+footer .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+footer .social-links a,
+footer .btn-style {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease-in-out, border-color 0.3s ease;
+  border: 2px solid transparent; /* Default border color */
+  padding: 8px 16px; /* Button padding */
+  border-radius: 30px;
+}
+
+footer .social-links a:hover,
+footer .btn-style:hover {
+  color: #ff8a00; /* Orange hover effect for a pop */
+  background-color: transparent;
+  transform: translateY(-2px);
+  border-color: #ff8a00; /* Add border color change on hover */
+}
+
+footer .btn-style {
+  font-size: 14px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 10px 15px;
+  }
+
+  footer p {
+    font-size: 13px;
+  }
+
+  footer .social-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer .social-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  footer .social-links a {
+    font-size: 13px;
+  }
+}
