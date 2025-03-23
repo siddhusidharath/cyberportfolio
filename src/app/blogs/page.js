@@ -12,9 +12,9 @@ const blogPosts = [
     description: "Cybersecurity is crucial for protecting sensitive information from cyber threats.",
   },
   {
-    slug: "how-to-secure-your-devices",
-    title: "How to Secure Your Devices",
-    description: "Learn how to protect your devices from unauthorized access and cyber threats.",
+    slug: "the-developer-who-left-a-door-open",
+    title: "The Developer Who Left a Door Open: A Lesson in Cybersecurity",
+    description: "Bob was a talented developer working at a fast-growing startup. He loved building features, optimizing performance, and delivering products fast. Security?",
   },
 ];
 
